@@ -1,29 +1,54 @@
-<div class="container">
+<kendo-grid [kendoGridBinding]="gridView" kendoGridSelectBy="ID" [selectedKeys]="mySelection" [pageSize]="30" [pageable]="true" [sortable]="true" [groupable]="true" [reorderable]="true" [resizable]="true" [height]="680" [columnMenu]="{filter: true}">
+    <ng-template kendoGridToolbarTemplate>
+        <input placeholder="Search in all columns..." kendoTextBox (input)="onFilter($event.target.value)" />
 
-    <kendo-grid [kendoGridBinding]="gridView" kendoGridSelectBy="id" [selectedKeys]="mySelection" [pageSize]="20" [pageable]="true" [sortable]="true" [groupable]="true" [reorderable]="true" [resizable]="true" [height]="680" [columnMenu]="{filter: true}">
-        <ng-template kendoGridToolbarTemplate>
-            <input placeholder="Search in all columns..." kendoTextBox (input)="onFilter($event.target.value)" />
-        </ng-template>
+        <button kendoGridExcelCommand type="button" icon="file-excel" style="float:right;">Export to Excel</button>
+        <button kendoGridPDFCommand icon="file-pdf" style="float:right;">Export to PDF</button>
 
-        <kendo-grid-checkbox-column [width]="45" [headerClass]="{'text-center': true}" [class]="{'text-center': true}" [resizable]="false" [columnMenu]="false" showSelectAll="true"></kendo-grid-checkbox-column>
+    </ng-template>
+
+    <kendo-grid-checkbox-column [width]="45" [headerClass]="{'text-center': true}" [class]="{'text-center': true}" [resizable]="false" [columnMenu]="false" showSelectAll="true"></kendo-grid-checkbox-column>
 
 
-        <kendo-grid-column-group title="Users" [columnMenu]="false">
-            <kendo-grid-column field="userId" title="userId">
+    <kendo-grid-column-group title="Cities" [columnMenu]="false" [headerStyle]="{'background-color': '#e1e1e1','color': '#656565','line-height': '2.5rem'}">
 
-            </kendo-grid-column>
+        <kendo-grid-column field="ID" title="ID">
+        </kendo-grid-column>
 
-            <kendo-grid-column field="id" title="id">
 
-            </kendo-grid-column>
+        <kendo-grid-column field="Code" title="Code">
+        </kendo-grid-column>
 
-            <kendo-grid-column field="title" title="title">
 
-            </kendo-grid-column>
+        <kendo-grid-column field="Name" title="Name">
+        </kendo-grid-column>
 
-            <kendo-grid-column field="body" title="body">
 
-            </kendo-grid-column>
-        </kendo-grid-column-group>
-    </kendo-grid>
-</div>
+        <kendo-grid-column field="PersianName" title="PersianName" [style]="{'text-align': 'right'}">
+        </kendo-grid-column>
+
+
+        <kendo-grid-column field="ProvinceName" title="ProvinceName">
+        </kendo-grid-column>
+
+
+        <kendo-grid-column field="ProvincePersianName" title="ProvincePersianName" [style]="{'text-align': 'right'}">
+        </kendo-grid-column>
+
+
+        <kendo-grid-column field="IsCapital" title="IsCapital">
+        </kendo-grid-column>
+
+
+        <kendo-grid-column field="Order" title="Order">
+        </kendo-grid-column>
+
+
+
+    </kendo-grid-column-group>
+
+
+    <kendo-grid-pdf fileName="Users.pdf" [repeatHeaders]="true"></kendo-grid-pdf>
+    <kendo-grid-excel fileName="Users.xlsx"></kendo-grid-excel>
+
+</kendo-grid>
