@@ -8,7 +8,7 @@ export class AppService {
     constructor(private http: HttpClient) { }
 
     getAll(): Observable<any> {
-        return this.http.get('https://jsonplaceholder.typicode.com/posts');
+        return this.http.get('https://cors-anywhere.herokuapp.com/https://safar724.com/Route/GetCities');
     
 }
 }
