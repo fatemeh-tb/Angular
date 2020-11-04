@@ -15,8 +15,8 @@ export class AppComponent implements OnInit {
   public gridData: any[] = this.user;
   public gridView: any[];
 
-
   public mySelection: string[] = [];
+
 
 
   constructor(private appService: AppService) {
@@ -27,32 +27,45 @@ export class AppComponent implements OnInit {
     this.getData();
   }
 
-  public onFilter(inputValue: string): void {
+  public onFilter(inputValue: string ): void {
     this.gridView = process(this.gridData, {
       filter: {
         logic: "or",
         filters: [
           {
-            field: 'userId',
-            operator: 'contains',
-            value: inputValue
+            field: 'ID',
+            operator: (value) => (value + "").indexOf(inputValue) >= 0 
           },
           {
-            field: 'id',
-            operator: 'contains',
-            value: inputValue
+            field: 'Code',
+            operator: (value) => (value + "").indexOf(inputValue) >= 0 
           },
           {
-            field: 'title',
-            operator: 'contains',
-            value: inputValue
+            field: 'Name',
+           operator: (value) => (value + "").indexOf(inputValue) >= 0 
           },
           {
-            field: 'body',
-            operator: 'contains',
-            value: inputValue
-          }
-
+            field: 'PersianName',
+           operator: (value) => (value + "").indexOf(inputValue) >= 0 
+          },
+          {
+            field: 'ProvinceName',
+           operator: (value) => (value + "").indexOf(inputValue) >= 0 
+          },
+          {
+            field: 'ProvincePersianName',
+            operator: (value) => (value + "").indexOf(inputValue) >= 0 
+          },
+          {
+            field: 'IsCapital',
+            operator: (value) => (value + "").indexOf(inputValue) >= 0 
+          },
+          {
+            field: 'Order',
+            operator: (value) => (value + "").indexOf(inputValue) >= 0 
+          },
+         
+         
         ],
       }
     }).data;
@@ -78,3 +91,4 @@ export class AppComponent implements OnInit {
 
 
 }
+
